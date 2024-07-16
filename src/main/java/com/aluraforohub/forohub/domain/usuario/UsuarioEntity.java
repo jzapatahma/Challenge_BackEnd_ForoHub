@@ -1,18 +1,17 @@
 package com.aluraforohub.forohub.domain.usuario;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Table(name = "usuarios")
-@Entity(name="Usuario")
 @Getter
+@Setter
+@Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "usuarios")
 @EqualsAndHashCode(of="idUsuario")
-public class Usuario {
+public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;

@@ -1,6 +1,6 @@
 package com.aluraforohub.forohub.domain.respuesta;
 
-import com.aluraforohub.forohub.domain.usuario.Usuario;
+import com.aluraforohub.forohub.domain.usuario.UsuarioEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,5 +25,5 @@ public class Respuesta {
     private Integer idUsuario;
     private Integer idTopico;
     @Transient
-    private List<Usuario> usuarios;
+    private List<UsuarioEntity> usuarioEntities;
 }

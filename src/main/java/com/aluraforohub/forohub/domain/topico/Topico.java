@@ -2,7 +2,7 @@ package com.aluraforohub.forohub.domain.topico;
 
 import com.aluraforohub.forohub.domain.curso.Curso;
 import com.aluraforohub.forohub.domain.respuesta.Respuesta;
-import com.aluraforohub.forohub.domain.usuario.Usuario;
+import com.aluraforohub.forohub.domain.usuario.UsuarioEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -30,7 +30,7 @@ public class Topico {
     private Integer idRespuesta;
 
     @Transient
-    private List<Usuario> usuarios;
+    private List<UsuarioEntity> usuarioEntities;
     @Transient
     private List<Curso> cursos;
     @Transient
