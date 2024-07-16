@@ -28,8 +28,12 @@ public class RoleEntity {
             inverseJoinColumns = @JoinColumn(name="permission_id"))
     private Set<PermissionEntity> permissions = new HashSet<>();
 
-// esta configuracion es la mas sencilla y funciona bien
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private Set<PermissionEntity> permissions = new HashSet<>();
+    public RoleEntity(RoleEnum roleEnum, Set<PermissionEntity> permissions) {
+        this.roleEnum = roleEnum;
+        this.permissions = permissions;
+    }
 
+    // Existe otra manera sencilla y es la siguiente
+    //    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //    private Set<PermissionEntity> permissions = new HashSet<>();
 }

@@ -1,11 +1,13 @@
 package com.aluraforohub.forohub.persistence.Authentication;
 
+import com.aluraforohub.forohub.persistence.user.DatosActualizarUser;
 import com.aluraforohub.forohub.persistence.user.DatosRegistroUser;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Setter
@@ -41,6 +43,15 @@ public class UserEntity {
         this.accountNoExpired = datosRegistroUser.accountNoExpired();
         this.accountNoLocked = datosRegistroUser.accountNoLocked();
         this.credentialNoExpired = datosRegistroUser.credentialNoExpired();
+        // Convertir roles y permisos
+        this.roles = datosRegistroUser.roles().stream()
+                .map(role -> {
+                    Set<PermissionEntity> permissions = role.permissions().stream()
+                            .map(permission -> new PermissionEntity(permission.name())) // Mapea a PermissionEntity
+                            .collect(Collectors.toSet());
+                    return new RoleEntity(role.roleEnum(), permissions); // Crea RoleEntity
+                })
+                .collect(Collectors.toSet());
     }
 
 
@@ -59,7 +70,7 @@ public class UserEntity {
     }
 
     // esta configuracion es la mas sencilla y funciona bien
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private Set<RoleEntity> roles = new HashSet<>();
+    //    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //    private Set<RoleEntity> roles = new HashSet<>();
 
 }

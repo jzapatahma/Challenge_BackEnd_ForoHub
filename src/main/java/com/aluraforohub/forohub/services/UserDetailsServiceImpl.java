@@ -22,7 +22,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //        //       // buscamos el usuario por
-//
         UserEntity userEntity = userRepository.findUserEntityByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("El usuario" + username + " no existe."));
 
@@ -39,7 +38,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 userEntity.isEnable(), userEntity.isAccountNoExpired(),
                 userEntity.isCredentialNoExpired(), userEntity.isAccountNoLocked(),
                 authorityList);
-
 
 //        List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
 //
@@ -58,6 +56,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //                        userEntity.isCredentialNoExpired(),
 //                        userEntity.isAccountNoLocked(),
 //                        authorityList);
+
     }
 
     //    @Override

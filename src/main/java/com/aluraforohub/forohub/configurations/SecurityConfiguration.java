@@ -21,41 +21,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    // La siguiente forma funciona pero debe quitarse los @PreAutorized en las clases controllers.
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-//        // HttpSecurity va pasando por todos los filtros
-//        return httpSecurity
-//                .csrf(csrf -> csrf.disable()) // no se necesita en el momento porque es un aplicacion web
-//                .httpBasic(Customizer.withDefaults())
-//                .sessionManagement((session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)))
-//                .authorizeHttpRequests(http -> {
-//                    // configurar los endpoints publicos
-//                    //http.requestMatchers(HttpMethod.GET, "/auth/get").permitAll();
-//
-//                    http.requestMatchers(HttpMethod.GET, "/topicos").permitAll();
-//                    http.requestMatchers(HttpMethod.POST, "/topicos").permitAll();
-//                    http.requestMatchers(HttpMethod.PUT, "/topicos").permitAll();
-//
-//                    // configurar los endpoints privados
-//                    //http.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN","DEVELOPER");
-//                    //http.requestMatchers(HttpMethod.POST, "/topicos").hasAnyRole("ADMIN","DEVELOPER");
-//
-//                    //http.requestMatchers(HttpMethod.POST, "/topicos").hasAnyRole("ADMIN","DEVELOPER");
-//                    //http.requestMatchers(HttpMethod.POST, "/topicos").hasAnyAuthority("CREATE","READ");
-//                    //http.requestMatchers(HttpMethod.PATCH, "/auth/patch").hasAnyAuthority("REFACTOR");
-//
-//                    //http.requestMatchers(HttpMethod.POST, "/auth/post").hasAuthority("READ");
-//                    //http.requestMatchers(HttpMethod.POST, "/auth/post").hasAuthority("CREATE");
-//                    // configurar para que demas endpoints sean denegados.
-//                    //http.anyRequest().denyAll(); // Denegar todos mapping
-//                    //configurar el resto de no especifidos, quiere decir pedira las credenciales.
-//                    //http.anyRequest().authenticated(); // si los demas mapping tienen usuario y contraseña validos dejarlos pasar.
-//                })
-//                .build();
-//    }
-
-
     // Para hacerlo de la siguiente manera se deben ubicar los @PreAuthorized en la clases controller.
     // para hacerlo en el controlador "UserController" se deba hacer uso de la anotacion @PreAuthorize()
     @Bean
@@ -91,5 +56,38 @@ public class SecurityConfiguration {
 //        System.out.println(new BCryptPasswordEncoder().encode("1234"));
 //    }
 
+    // La siguiente forma funciona pero debe quitarse los @PreAutorized en las clases controllers.
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+//        // HttpSecurity va pasando por todos los filtros
+//        return httpSecurity
+//                .csrf(csrf -> csrf.disable()) // no se necesita en el momento porque es un aplicacion web
+//                .httpBasic(Customizer.withDefaults())
+//                .sessionManagement((session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)))
+//                .authorizeHttpRequests(http -> {
+//                    // configurar los endpoints publicos
+//                    //http.requestMatchers(HttpMethod.GET, "/auth/get").permitAll();
+//
+//                    http.requestMatchers(HttpMethod.GET, "/topicos").permitAll();
+//                    http.requestMatchers(HttpMethod.POST, "/topicos").permitAll();
+//                    http.requestMatchers(HttpMethod.PUT, "/topicos").permitAll();
+//
+//                    // configurar los endpoints privados
+//                    //http.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN","DEVELOPER");
+//                    //http.requestMatchers(HttpMethod.POST, "/topicos").hasAnyRole("ADMIN","DEVELOPER");
+//
+//                    //http.requestMatchers(HttpMethod.POST, "/topicos").hasAnyRole("ADMIN","DEVELOPER");
+//                    //http.requestMatchers(HttpMethod.POST, "/topicos").hasAnyAuthority("CREATE","READ");
+//                    //http.requestMatchers(HttpMethod.PATCH, "/auth/patch").hasAnyAuthority("REFACTOR");
+//
+//                    //http.requestMatchers(HttpMethod.POST, "/auth/post").hasAuthority("READ");
+//                    //http.requestMatchers(HttpMethod.POST, "/auth/post").hasAuthority("CREATE");
+//                    // configurar para que demas endpoints sean denegados.
+//                    //http.anyRequest().denyAll(); // Denegar todos mapping
+//                    //configurar el resto de no especifidos, quiere decir pedira las credenciales.
+//                    //http.anyRequest().authenticated(); // si los demas mapping tienen usuario y contraseña validos dejarlos pasar.
+//                })
+//                .build();
+//    }
 
 }

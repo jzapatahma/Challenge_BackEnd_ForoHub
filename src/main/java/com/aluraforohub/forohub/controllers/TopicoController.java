@@ -1,6 +1,5 @@
 package com.aluraforohub.forohub.controllers;
 
-import com.aluraforohub.forohub.domain.topico.TopicoRepository;
 import com.aluraforohub.forohub.persistence.topico.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

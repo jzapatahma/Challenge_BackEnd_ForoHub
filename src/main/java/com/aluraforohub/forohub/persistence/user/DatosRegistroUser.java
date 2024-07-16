@@ -12,7 +12,7 @@ public record DatosRegistroUser(
         boolean accountNoExpired,
         boolean accountNoLocked,
         boolean credentialNoExpired,
-        Set<RoleEntity> roles
+        Set<DatosRegistroRole> roles
 ) {
 
 }
