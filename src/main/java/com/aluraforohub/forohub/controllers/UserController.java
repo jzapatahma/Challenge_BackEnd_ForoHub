@@ -45,10 +45,11 @@ public class UserController {
 
     public ResponseEntity<String> createUser(@RequestBody UserRequestDto userRequest) {
         try {
+            BCryptPasswordEncoder bPdEncoder = new BCryptPasswordEncoder();
             // Crear un nuevo usuario
             UserEntity newUser = new UserEntity();
             newUser.setUsername(userRequest.getUsername());
-            newUser.setPassword(userRequest.getPassword());
+            newUser.setPassword(bPdEncoder.encode(userRequest.getPassword()));
 
             // Asociar roles y permisos existentes
             for (RoleDto roleDto : userRequest.getRoles()) {
